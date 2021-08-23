@@ -1,0 +1,25 @@
+{{- partial "head.html" . -}}
+{{- partial "header.html" . -}}
+<section id="search">
+    <form action="{{ "search/" | absURL }}">
+        <input type="text" name="s" id="search-query" placeholder="Search Journal...">
+        <button type="submit"><i class="ri-search-line"></i></button>
+    </form>
+</section>
+
+<div id="search-results">
+    <h1>Entries</h1>
+</div>
+
+<!-- this template is sucked in by search.js and appended to the search-results div above. So editing here will adjust style -->
+<script id="search-result-template" type="text/x-js-template">
+<section id="search-results-list">
+<ul>
+    <li id="summary-${key}">
+      <h2><a href="${link}">${title}</a></h2>
+      <p>${snippet}</p>
+    </li>
+</ul>
+</section>
+</script>
+{{- partial "footer.html" . -}}

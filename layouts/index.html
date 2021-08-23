@@ -1,0 +1,57 @@
+{{ define "main" }}
+
+<header>
+    <h1>{{ .Site.Title }}</h1>
+</header>
+
+<ul id="section_jump">
+    <li><a href="#pinned"><i class="ri-pushpin-2-line"></i> Pinned</a></li>
+    <li><a href="#random"><i class="ri-shuffle-line"></i> Random</a></li>
+    <li><a href="#title"><i class="ri-bookmark-line"></i> Title</a></li>
+    <li><a href="#log"><i class="ri-bookmark-line"></i> Log</a></li>
+</ul>
+
+<ul id="index_types_list">
+    {{ range $name, $taxonomy := .Site.Taxonomies.types }}
+    <li><span class="label_{{ $name }}"><a href="{{ "/types/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a></span></li>
+  {{ end }}
+</ul>
+
+<main id="index">
+    <h2 id="pinned">Pinned Entries</h2>
+    <ul class="index_list">
+    {{ range .Site.RegularPages }}
+        {{ if .Params.pinned }}
+            {{- partial "index_list.html" . -}}
+        {{ end }}    
+    {{ end }}
+    </ul>
+
+    <h2 id="random">Random Entry</h2>
+    <ul class="index_list">
+    {{ range first 1 (shuffle (where .Site.RegularPages ".Params.types" "!=" "title")) }}
+        {{- partial "index_list.html" . -}}
+    {{ end }}
+    </ul>
+
+    {{ $title := (where .Site.RegularPages ".Params.types" "==" "title") }}
+    {{ $titleCount := len $title }}
+    <h2 id="title">Title Entries ({{ $titleCount }})</h2>
+    <ul class="index_list">
+    {{ range (where .Site.RegularPages ".Params.types" "title") }}
+        {{- partial "index_list.html" . -}}
+    {{ end }}
+    </ul>
+
+    {{ $log := (where .Site.RegularPages ".Params.types" "!=" "title") }}
+    {{ $logCount := len $log }}
+    <h2 id="log">Log Entries ({{ $logCount }})</h2>
+    <ul class="index_list">
+    {{ range (where (where .Site.RegularPages ".Params.types" "!=" "title") ".Params.types" "!=" "done") }}
+        {{- partial "index_list.html" . -}}
+    {{ end }}
+    </ul>
+
+</main>
+
+{{ end }}
