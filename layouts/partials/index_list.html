@@ -1,0 +1,15 @@
+<li>
+    <h3><a href="{{ .Permalink }}" title="{{ .Params.title }}">{{ .Params.title }}</a></h3> <span class="label_{{ .Params.types }}"><a href="/types/{{ .Params.types }}/">{{ .Params.types }}</a></span>
+    
+    <div id="entry_id">
+        <i class="ri-information-line"></i>{{ .Params.id }} 
+    </div>
+    
+    <div id="entry_date">
+        <i class="ri-calendar-line"></i><date>{{ .Date.Format "2 January 2006" }}</date> {{ if .Params.updated }}<i class="ri-refresh-line"></i>{{ .Params.updated | dateFormat "2 January 2006" }}{{ end }}
+    </div>
+
+    <div id="entry_tags">
+        <i class="ri-hashtag"></i>{{ range .Params.tags }}<a href="/tags/{{ . | urlize }}">{{ . }}</a>{{ end }}
+    </div>
+</li>

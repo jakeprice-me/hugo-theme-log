@@ -1,0 +1,67 @@
+{{- partial "head.html" . -}}
+{{- partial "header.html" . -}}
+
+<div id="title" class="label_{{ .Params.types }}">
+    <h1>{{ .Title }}</h1>
+</div>
+
+<div class="entry">
+    <div id="entry_id">
+        <i class="ri-information-line"></i>{{ .Params.id }} 
+    </div>
+    
+    <div id="entry_date">
+        <i class="ri-calendar-line"></i><date>{{ .Date.Format "2 January 2006" }}</date> {{ if .Params.updated }}<i class="ri-refresh-line"></i>{{ .Params.updated | dateFormat "2 January 2006" }}{{ end }}
+    </div>
+
+    <div id="entry_type">
+        <i class="ri-folder-info-line"></i><span class="label_{{ .Params.types }}">{{ .Params.types }}</span>
+    </div>
+
+    <div id="entry_tags">
+        <i class="ri-hashtag"></i>{{ range .Params.tags }}<a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">{{ . }}</a>{{ end }}
+    </div>
+</div>
+
+<div id="padding_container">
+<article id="main-entry">
+    <p><em>The contents of this page is dynamically created.</em></p>
+
+    <h2>Priority Focus</h2>
+            <ul>
+                {{ range (where .Site.RegularPages ".Params.types" "todo-f") }}
+                <li><date>{{ .Date.Format "2006-01-02 15:04:05" }}</date> {{ .Params.id }} <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+                {{ end }}
+            </ul>
+
+    <h2>Priority 1</h2>
+            <ul>
+                {{ range (where .Site.RegularPages ".Params.types" "todo-1") }}
+                <li><date>{{ .Date.Format "2006-01-02 15:04:05" }}</date> {{ .Params.id }} <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+                {{ end }}
+            </ul>
+
+    <h2>Priority 2</h2>
+            <ul>
+                {{ range (where .Site.RegularPages ".Params.types" "todo-2") }}
+                <li><date>{{ .Date.Format "2006-01-02 15:04:05" }}</date> {{ .Params.id }} <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+                {{ end }}
+            </ul>
+
+    <h2>Priority 3</h2>
+            <ul>
+                {{ range (where .Site.RegularPages ".Params.types" "todo-3") }}
+                <li><date>{{ .Date.Format "2006-01-02 15:04:05" }}</date> {{ .Params.id }} <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+                {{ end }}
+            </ul>
+
+    <h2 class="todo_done">Done</h2>
+            <ul>
+                {{ range (where .Site.RegularPages ".Params.types" "done") }}
+                <li class="todo_done"><date>{{ .Date.Format "2006-01-02 15:04:05" }}</date> {{ .Params.id }} <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+                {{ end }}
+            </ul>
+
+</article>
+</div>
+{{- partial "footer.html" . -}}

@@ -1,0 +1,107 @@
+{{- partial "head.html" . -}}
+{{- partial "header.html" . -}}
+
+<div id="title" class="label_{{ .Params.types }}">
+    <h1>{{ .Title }}</h1>
+</div>
+
+<div class="entry">
+    <div id="entry_id">
+        <i class="ri-information-line"></i>{{ .Params.id }} 
+    </div>
+    
+    <div id="entry_date">
+        <i class="ri-calendar-line"></i><date>{{ .Date.Format "2 January 2006 15:04:05" }}</date>
+    </div>
+
+    {{ if .Params.updated }}
+    <div id="entry_updated">
+        <i class="ri-refresh-line"></i><date>{{ .Params.updated | dateFormat "2 January 2006 15:04:05" }}</date>
+    </div>
+    {{ end }}
+
+    <div id="entry_reading_time">
+        <i class="ri-article-line"></i>{{ .ReadingTime }} min read
+    </div>
+
+    <div id="entry_type">
+        <i class="ri-folder-info-line"></i><span class="label_{{ .Params.types }}"><a href="/types/{{ .Params.types }}/">{{ .Params.types }}</a></span>
+    </div>
+
+    <div id="entry_tags">
+        <i class="ri-hashtag"></i>{{ range .Params.tags }}<a href="/tags/{{ . | urlize }}">{{ . }}</a>{{ end }}
+    </div>
+</div>
+
+<article id="main-entry">
+    <!-- See https://stackoverflow.com/a/33686978 for explanation behind data-delay (basically allows the link in the popup to be clicked) -->
+    {{ $content := .Content }}
+    {{ $anchorFormatString := `<a data-toggle=%q title='<a href=%q>%q</a>' class=%q tabindex=%q role=%q data-trigger=%q data-delay='{ "show": 0, "hide": 150 }'>%s</a>` }}
+    {{ $entryLinks := findRE `\[\[(\d+)\]\]` .Content }}
+    {{ range $entryLinks }}
+      {{ $id := trim . "[]" }}
+      {{ $page := site.GetPage $id }}
+      {{ $title := htmlEscape $page.Title }} <!-- Use `htmlEscape` as otherwise things break if a title has an apostrophe -->
+      {{ $anchor := printf $anchorFormatString "popover" $page.RelPermalink $title "wikilink" "0" "button" "focus" $id }}
+      {{ $content = replace $content . $anchor }}
+    {{ end }}
+    {{ $content | safeHTML }}
+</article>
+
+<script>
+    $('[data-toggle="popover"').popover({
+        html: true,
+        position: ['top', 'auto'],
+    });
+</script>
+
+<aside id="related">
+    <!-- Backlinks section taken from https://github.com/crisrojas/Zettels -->
+    {{ $firstBracket := "\\[\\[" }}
+    {{ $lastBracket := "\\]\\]" }}
+    {{ $filename := .File.BaseFileName }}
+    {{ $wikilink :=  printf "%s%s%s" $firstBracket $filename $lastBracket }}
+
+    <h3>Referenced By</h3>
+    <ul>
+    {{- $.Scratch.Add "backlinks" slice -}}
+    {{- range .Site.RegularPages -}}
+        {{ if (findRE $wikilink .Content) }}
+            {{ $.Scratch.Set "title" .Title }}
+            {{ $title := $.Scratch.Get "title" }}
+            {{ $.Scratch.Add "backlinks" (dict .Permalink $title) }}
+            <li><a href="{{ .Permalink }}">{{ $title }} <span class="label_{{ .Params.types }}">{{ .Params.types }}</span></a></li>
+        {{ end }}
+    {{ end }}
+
+    </ul>
+
+    {{- $backlinks := $.Scratch.Get "backlinks" -}}
+
+    {{ if le (len $backlinks) 0 }}
+    <p>No references to this entry.</p>
+    {{ end }}
+<!-- End Backlinks -->
+    {{ $related := .Site.RegularPages.Related . | first 5 }}
+    {{ with $related }}
+    <h3>Related Entries</h3>
+    <ul>
+        {{ range . }}
+        <li>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="label_{{ .Params.types }}">{{ .Params.types }}</span>
+        </li>
+        {{ end }}
+    </ul>
+{{ end }}
+</aside>
+
+
+<div id="edit_bar">
+    <h3>Open Entry In</h3>
+    <ul>
+        <li><a href="obsidian://open?vault=log&file={{ .Params.id }}"><span class="obsidian">Obsidian</span></a></li>
+        <li><a href="vscode://file/M:/files/documents/log/content/{{ .Params.id }}.md"><span class="vscode">VSCode</span></a></li>
+    </ul>
+</div>
+
+{{- partial "footer.html" . -}}

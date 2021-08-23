@@ -1,0 +1,30 @@
+{{ define "main" }}
+
+<header>
+    <h1>All {{ .Title }}</h1>
+</header>
+
+<ul id="section_jump">
+    <li><a href="#count"><i class="ri-list-ordered"></i> Count</a></li>
+    <li><a href="#alphabetical"><i class="ri-character-recognition-line"></i> Alphabetical</a></li>
+</ul>
+
+<main id="index">
+
+    <h2 id="count">Count</h2>
+    <ul class="index_tag_list">
+        {{ range .Data.Terms.ByCount }}
+            <li><span class="label_tag"><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></span> ({{ .Count }})</li>
+        {{ end }}
+    </ul>
+
+    <h2 id="alphabetical">Alphabetical</h2>
+    <ul class="index_tag_list">
+        {{ range .Data.Terms.Alphabetical }}
+            <li><span class="label_tag"><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></span> ({{ .Count }})</li>
+        {{ end }}
+    </ul>
+        
+</main>
+
+{{ end }}

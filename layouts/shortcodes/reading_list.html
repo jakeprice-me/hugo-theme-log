@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range .Site.Data.reading_list }}
+        {{ range sort .Books "title" }}
+        <tr>
+            <td>{{ .title }}</td>
+            <td>{{ .author }}</td>
+        </tr>    
+        {{ end }}
+        {{ end }}
+    </tbody>
+</table>

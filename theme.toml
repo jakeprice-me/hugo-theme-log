@@ -1,0 +1,11 @@
+name = "Log"
+license = "GPL-3.0"
+licenselink = ""
+description = "Hugo Personal Log Theme"
+homepage = "https://git.jpr.sh/jprice/hugo-theme-log"
+tags = ["knowledge-base", "digital-garden", "journal", "notes", "wiki", "log"]
+min_version = 0.87
+
+[author]
+  name = "Jake Price"
+  homepage = "https://jpr.sh"
