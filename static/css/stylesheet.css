@@ -717,6 +717,17 @@ span[class*="label_"] {
   text-decoration: none;
 }
 
+.label_performance {
+  color: #fff8e1;
+  background-color: #ffc107;
+}
+
+.label_performance a {
+  color: #fff8e1;
+  background-color: #ffc107;
+  text-decoration: none;
+}
+
 /* ---- Hugo Shortcodes ---------------------------------------------------- */
 
 .book-rating {
