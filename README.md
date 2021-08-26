@@ -1,5 +1,7 @@
 # Personal Log Theme for Hugo
 
+## Screenshot
+
 ![](screenshot.png)
 
 ## Hugo Site Config
