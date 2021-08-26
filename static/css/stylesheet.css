@@ -1833,6 +1833,19 @@ article iframe {
   line-height: 2.5rem;
 }
 
+#edit_bar code {
+  padding: 0.25rem;
+  font-family: var(--monospace);
+  font-size: var(--code);
+  border-radius: 0.5rem;
+  background: #eee;
+}
+
+#edit_bar .vim {
+  font-weight: 600;
+  color: #009930;
+}
+
 #edit_bar .vscode {
   font-weight: 600;
   color: #0066b8;
