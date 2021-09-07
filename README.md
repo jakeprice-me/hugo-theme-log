@@ -12,6 +12,7 @@ Make sure the below configuration parameters are set in `config.yaml`. They are 
 title: <site-title>
 theme: hugo-theme-log
 params:
+  start_page: "<full-path-to-start-page>"
   content_dir: "<path-to-content-directory>"
 pygmentsUseClasses: true
 markup:
