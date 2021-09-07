@@ -1,0 +1,26 @@
+<p><a href="vim:///{{ .Site.Params.root_dir }}/data-csv/habit_tracker.tsv">Edit Habits in Vim</a></p>  
+<table>
+  {{ $url := "/data-csv/habit_tracker.tsv" }}
+  {{ $sep := "\t" }}
+  {{ range $i, $r := getCSV $sep $url }}
+
+    {{ if eq $i 0 }}
+      <thead>
+        <tr>
+          {{ range $r }}
+            <th>{{ . }}</th>
+          {{end}}
+        </tr>
+      </thead>
+    {{else}}
+      <tbody>
+        <tr>
+          {{ range  $r }}
+            <td>{{ . }}</td>
+          {{end}}
+        </tr>
+      </tbody>
+    {{end}}
+
+  {{ end }}
+</table>

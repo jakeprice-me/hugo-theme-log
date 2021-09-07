@@ -13,7 +13,7 @@ title: <site-title>
 theme: hugo-theme-log
 params:
   start_page: "<full-path-to-start-page>"
-  content_dir: "<path-to-content-directory>"
+  root_dir: "<path-to-content-directory>"
 pygmentsUseClasses: true
 markup:
   goldmark:
