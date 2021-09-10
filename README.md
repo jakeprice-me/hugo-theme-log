@@ -14,6 +14,7 @@ theme: hugo-theme-log
 params:
   start_page: "<full-path-to-start-page>"
   root_dir: "<path-to-content-directory>"
+  obsidian_vault: "<obsidian-vault-name>"
 pygmentsUseClasses: true
 markup:
   goldmark:

@@ -728,6 +728,17 @@ span[class*="label_"] {
   text-decoration: none;
 }
 
+.label_catchup {
+  color: #e8f5e9;
+  background-color: #4caf50;
+}
+
+.label_catchup a {
+  color: #e8f5e9;
+  background-color: #4caf50;
+  text-decoration: none;
+}
+
 /* ---- Hugo Shortcodes ---------------------------------------------------- */
 
 .book-rating {
@@ -1842,7 +1853,7 @@ article iframe {
 }
 
 #edit_bar .vim {
-  font-weight: 400;
+  font-weight: 600;
   color: #009930;
 }
 
