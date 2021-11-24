@@ -18,6 +18,11 @@
 </ul>
 
 <main id="index">
+
+    <div id="build_info">
+        <i class="ri-stack-line"></i> Built {{ len .Site.RegularPages }} entries at {{ now.Format "2006-01-02 15:04:05" }}
+    </div>
+
     <h2 id="pinned">Pinned Entries</h2>
     <ul class="index_list">
     {{ range .Site.RegularPages }}
