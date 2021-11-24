@@ -1,7 +1,7 @@
-<p><a href="vim:///{{ .Site.Params.root_dir }}/data-csv/habit_tracker.tsv">Edit Habits in Vim</a></p>  
+<p><a href="guivim:///{{ .Site.Params.root_dir }}/data-csv/habit_tracker.csv">Edit Habits in Vim</a></p>  
 <table>
-  {{ $url := "/data-csv/habit_tracker.tsv" }}
-  {{ $sep := "\t" }}
+  {{ $url := "/data-csv/habit_tracker.csv" }}
+  {{ $sep := "|" }}
   {{ range $i, $r := getCSV $sep $url }}
 
     {{ if eq $i 0 }}
