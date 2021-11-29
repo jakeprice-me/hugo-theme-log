@@ -591,6 +591,17 @@ span[class*="label_"] {
   text-decoration: none;
 }
 
+.label_bookmark {
+  color: #eceff1;
+  background-color: #37474f;
+}
+
+.label_bookmark a {
+  color: #eceff1;
+  background-color: #37474f;
+  text-decoration: none;
+}
+
 .label_archive {
   color: #efebe9;
   background-color: #4e342e;
