@@ -395,12 +395,6 @@ header p {
   border-bottom: 1px solid #eee;
 }
 
-#index #build_info {
-    padding: 2rem;
-    line-height: 3rem;
-    color: #111;
-}
-
 #index h2 {
   padding: 2rem;
   font-family: var(--sans_serif_header);
@@ -425,6 +419,16 @@ header p {
 
 #index_types_list a {
   text-decoration: none;
+}
+
+#index #build_info {
+    padding: 1rem 0 1rem 2rem;
+    line-height: 3rem;
+}
+
+#index #build_info i {
+  vertical-align: -0.2rem;
+  color: #9e9e9e;
 }
 
 .index_list {
