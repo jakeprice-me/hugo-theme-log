@@ -34,26 +34,18 @@
 </div>
 
 <article id="main-entry">
-    <!-- See https://stackoverflow.com/a/33686978 for explanation behind data-delay (basically allows the link in the popup to be clicked) -->
     {{ $content := .Content }}
-    {{ $anchorFormatString := `<a data-toggle=%q title='<a href=%q>%q</a>' class=%q tabindex=%q role=%q data-trigger=%q data-delay='{ "show": 0, "hide": 150 }'>%s</a>` }}
+    {{ $anchorFormatString := `<a href=%q title=%q class=%q>%s</a>` }}
     {{ $entryLinks := findRE `\[\[(\d+)\]\]` .Content }}
     {{ range $entryLinks }}
       {{ $id := trim . "[]" }}
       {{ $page := site.GetPage $id }}
-      {{ $title := htmlEscape $page.Title }} <!-- Use `htmlEscape` as otherwise things break if a title has an apostrophe -->
-      {{ $anchor := printf $anchorFormatString "popover" $page.RelPermalink $title "wikilink" "0" "button" "focus" $id }}
+      {{ $anchor := printf $anchorFormatString $page.RelPermalink $page.Title "wikilink" $page.Title }}
       {{ $content = replace $content . $anchor }}
     {{ end }}
     {{ $content | safeHTML }}
-</article>
 
-<script>
-    $('[data-toggle="popover"').popover({
-        html: true,
-        position: ['top', 'auto'],
-    });
-</script>
+</article>
 
 <a name="bottom"></a>
 <aside id="related">
