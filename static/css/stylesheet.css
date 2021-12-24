@@ -974,48 +974,6 @@ article h6 a:active {
   color: #1a237e;
 }
 
-.popover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1060;
-  display: block;
-  max-width: 25rem;
-  text-align: left;
-  text-align: start;
-  text-decoration: none;
-  text-shadow: none;
-  text-transform: none;
-  letter-spacing: normal;
-  word-break: normal;
-  word-spacing: normal;
-  white-space: normal;
-  line-break: auto;
-  word-wrap: break-word;
-  line-height: 2rem;
-  background-color: #fafafa;
-  background-clip: padding-box;
-  border-radius: 0.5rem;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-}
-
-.popover-header {
-  padding: 1rem;
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-.popover-header a {
-  color: #111;
-  text-decoration: none;
-}
-
-.popover-header:empty {
-  display: none;
-}
-
 .admonition.attention {
   margin: 1.5rem 0;
   padding: 2rem;
