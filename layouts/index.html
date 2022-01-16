@@ -7,6 +7,7 @@
 <ul id="section_jump">
     <li><a href="#pinned"><i class="ri-pushpin-2-line"></i> Pinned</a></li>
     <li><a href="#random"><i class="ri-shuffle-line"></i> Random</a></li>
+    <li><a href="#recent"><i class="ri-shuffle-line"></i> Recent</a></li>
     <li><a href="#title"><i class="ri-bookmark-line"></i> Title</a></li>
     <li><a href="#log"><i class="ri-bookmark-line"></i> Log</a></li>
 </ul>
@@ -34,7 +35,14 @@
 
     <h2 id="random">Random Entry</h2>
     <ul class="index_list">
-    {{ range first 1 (shuffle (where .Site.RegularPages ".Params.types" "!=" "title")) }}
+    {{ range first 1 (shuffle (where (where .Site.RegularPages ".Params.types" "!=" "title") ".Params.types" "!=" "done")) }}
+        {{- partial "index_list.html" . -}}
+    {{ end }}
+    </ul>
+
+    <h2 id="recent">Recently Modified</h2>
+    <ul class="index_list">
+    {{ range first 5 (where .Site.RegularPages.ByLastmod.Reverse ".Params.types" "!=" "done") }}
         {{- partial "index_list.html" . -}}
     {{ end }}
     </ul>
