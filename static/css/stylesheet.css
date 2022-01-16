@@ -379,6 +379,7 @@ header p {
 
 #section_jump a {
   padding: 0.5rem;
+  line-height: 3.5rem;
   font-size: 1.4rem;
   color: #111;
   text-decoration: none;
