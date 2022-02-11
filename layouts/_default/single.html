@@ -28,6 +28,12 @@
         <i class="ri-folder-info-line"></i><span class="label_{{ .Params.types }}"><a href="/types/{{ .Params.types }}/">{{ .Params.types }}</a></span>
     </div>
 
+    {{ if .Params.link }}
+    <div id="entry_original">
+        <i class="ri-external-link-line"></i><a href="{{ .Params.link }}" title="{{ .Params.link }}" target="_blank">Original Link</a></date>
+    </div>
+    {{ end }}
+
     <div id="entry_tags">
         <i class="ri-hashtag"></i>{{ range .Params.tags }}<a href="/tags/{{ . | urlize }}">{{ . }}</a>{{ end }}
     </div>
