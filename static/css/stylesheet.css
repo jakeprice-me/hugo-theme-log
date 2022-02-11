@@ -506,6 +506,28 @@ header p {
   padding: 0.5rem 0 0.5rem 0;
 }
 
+#entry_original {
+  display: block;
+  padding: 0.5rem 0 0.5rem 0;
+}
+
+#entry_original a:link {
+  margin: 0 0.5rem 0 0;
+  padding: 0.35rem;
+  color: #111;
+  text-decoration: none;
+}
+
+#entry_original a:visited {
+  color: #111;
+  text-decoration: none;
+}
+
+#entry_original a:hover, #entry_original a:active {
+  color: #111;
+  text-decoration: none;
+}
+
 #entry_reading_time {
   display: block;
   padding: 0.5rem 0 0 0;
