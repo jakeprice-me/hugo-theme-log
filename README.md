@@ -1,5 +1,11 @@
 # Personal Log Theme for Hugo
 
+A theme for my personal log/knowledge-base/wiki/digital-garden that I have created from scratch. 
+
+I think it's visually nice, but the HTML/CSS is currently a rushed mess. 
+
+Bare in mind that the theme is designed and created for a very specific Hugo use-case (my personal knowledge system), so it won't work out of the box on a normal Hugo site.
+
 ## Screenshot
 
 ![](.readme-assets/theme_screenshot.png)
