@@ -1,71 +1,141 @@
 {{ define "main" }}
 
 <header>
-    <h1>{{ .Site.Title }}</h1>
+    <div id="header-container">
+        <h1><i class="las la-file-alt"></i> {{ .Site.Title }}</h1>
+    </div>
 </header>
 
-<ul id="section_jump">
-    <li><a href="#pinned"><i class="ri-pushpin-2-line"></i> Pinned</a></li>
-    <li><a href="#random"><i class="ri-shuffle-line"></i> Random</a></li>
-    <li><a href="#recent"><i class="ri-shuffle-line"></i> Recent</a></li>
-    <li><a href="#title"><i class="ri-bookmark-line"></i> Title</a></li>
-    <li><a href="#log"><i class="ri-bookmark-line"></i> Log</a></li>
-</ul>
-
-<ul id="index_types_list">
-    {{ range $name, $taxonomy := .Site.Taxonomies.types }}
-    <li><span class="label_{{ $name }}"><a href="{{ "/types/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a></span></li>
-  {{ end }}
-</ul>
-
-<main id="index">
-
-    <div id="build_info">
-        <i class="ri-stack-line"></i> Built {{ len .Site.RegularPages }} entries at {{ now.Format "2006-01-02 15:04:05" }}
+<nav id="sections">
+    <div id="nav-sections-container">
+        <ul>
+            <li>
+                <a href="#pinned">
+                    <i class="las la-thumbtack"></i> Pinned
+                </a>
+            </li>
+            <li>
+                <a href="#random">
+                    <i class="las la-random"></i> Random
+                </a>
+            </li>
+            <li>
+                <a href="#recent">
+                    <i class="las la-calendar"></i> Recent
+                </a>
+            </li>
+            <li>
+                <a href="#title">
+                    <i class="las la-bookmark"></i> Title
+                </a>
+            </li>
+            <li>
+                <a href="#log">
+                    <i class="las la-file-alt"></i> Log
+                </a>
+            </li>
+        </ul>
     </div>
+</nav>
 
-    <h2 id="pinned">Pinned Entries</h2>
-    <ul class="index_list">
-    {{ range .Site.RegularPages }}
-        {{ if .Params.pinned }}
+<nav id="types">
+    <div id="nav-types-container">
+        <h2><i class="las la-folder"></i> Entry Types</h2>
+        <ul>
+            {{ range $name, $taxonomy := .Site.Taxonomies.types }}
+            <li>
+                <span class="label_{{ $name }}">
+                    <a href="{{ "/types/" | relLangURL }}{{ $name | urlize }}"><i class="las la-folder"></i> {{ $name }}</a>
+                </span>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+</nav>
+
+<main id="entries">
+    <div id="main-entries-container">
+        <div class="section-title">
+            <h2 id="pinned"><i class="las la-thumbtack"></i> Pinned Entries</h2>
+        </div>
+        <ul class="index_list">
+        {{ range .Site.RegularPages }}
+            {{ if .Params.pinned }}
+                {{- partial "index_list.html" . -}}
+            {{ end }}    
+        {{ end }}
+        </ul>
+    </div>
+</main>
+
+<main id="entries">
+    <div id="main-entries-container">
+        <div class="section-title">
+            <h2 id="random"><i class="las la-random"></i> Random Entry</h2>
+        </div>
+        <ul class="index_list">
+        {{ range first 1 (shuffle (where (where .Site.RegularPages ".Params.types" "!=" "title") ".Params.types" "!=" "done")) }}
             {{- partial "index_list.html" . -}}
-        {{ end }}    
-    {{ end }}
-    </ul>
+        {{ end }}
+        </ul>
+    </div>
+</main>
 
-    <h2 id="random">Random Entry</h2>
-    <ul class="index_list">
-    {{ range first 1 (shuffle (where (where .Site.RegularPages ".Params.types" "!=" "title") ".Params.types" "!=" "done")) }}
-        {{- partial "index_list.html" . -}}
-    {{ end }}
-    </ul>
+<main id="entries">
+    <div id="main-entries-container">
 
-    <h2 id="recent">Recently Modified</h2>
-    <ul class="index_list">
-    {{ range first 5 (where .Site.RegularPages.ByLastmod.Reverse ".Params.types" "!=" "done") }}
-        {{- partial "index_list.html" . -}}
-    {{ end }}
-    </ul>
+        <div class="section-title">
+            <h2 id="recent"><i class="las la-calendar"></i> Recently Modified</h2>
+            <div class="count">
+                <p><i class="las la-file-alt"></i> 5</p>
+            </div>
+        </div>
 
-    {{ $title := (where .Site.RegularPages ".Params.types" "==" "title") }}
-    {{ $titleCount := len $title }}
-    <h2 id="title">Title Entries ({{ $titleCount }})</h2>
-    <ul class="index_list">
-    {{ range (where .Site.RegularPages ".Params.types" "title") }}
-        {{- partial "index_list.html" . -}}
-    {{ end }}
-    </ul>
+        <ul class="index_list">
+        {{ range first 5 (where .Site.RegularPages.ByLastmod.Reverse ".Params.types" "!=" "done") }}
+            {{- partial "index_list.html" . -}}
+        {{ end }}
+        </ul>
+    </div>
+</main>
 
-    {{ $log := (where .Site.RegularPages ".Params.types" "!=" "title") }}
-    {{ $logCount := len $log }}
-    <h2 id="log">Log Entries ({{ $logCount }})</h2>
-    <ul class="index_list">
-    {{ range (where (where .Site.RegularPages ".Params.types" "!=" "title") ".Params.types" "!=" "done") }}
-        {{- partial "index_list.html" . -}}
-    {{ end }}
-    </ul>
+<main id="entries">
+    <div id="main-entries-container">
+        {{ $title := (where .Site.RegularPages ".Params.types" "==" "title") }}
+        {{ $titleCount := len $title }}
 
-<a name="bottom"></a>
+        <div class="section-title">
+            <h2 id="title"><i class="las la-bookmark"></i> Title Entries</h2>
+            <div class="count">
+                <p><i class="las la-file-alt"></i> {{ $titleCount }}</p>
+            </div>
+        </div>
+        <ul class="index_list">
+        {{ range (where .Site.RegularPages ".Params.types" "title") }}
+            {{- partial "index_list.html" . -}}
+        {{ end }}
+        </ul>
+    </div>
+</main>
+
+<main id="entries">
+    <div id="main-entries-container">
+        {{ $log := (where .Site.RegularPages ".Params.types" "!=" "title") }}
+        {{ $logCount := len $log }}
+        <div class="section-title">
+            <h2 id="log">
+                <i class="las la-file-alt"></i> Log Entries 
+            </h2>
+            <div class="count">
+                <p><i class="las la-file-alt"></i> {{ $logCount }}</p>
+            </div>
+        </div>
+        <ul class="index_list">
+        {{ range (where (where .Site.RegularPages ".Params.types" "!=" "title") ".Params.types" "!=" "done") }}
+            {{- partial "index_list.html" . -}}
+        {{ end }}
+        </ul>
+    </div>
 </main>
 
 {{ end }}

@@ -1,30 +1,68 @@
 {{ define "main" }}
 
 <header>
-    <h1>All Types</h1>
+    <div id="header-container">
+        <h1>{{ .Title }}</h1>
+    </div>
 </header>
 
-<ul id="section_jump">
-    <li><a href="#count"><i class="ri-list-ordered"></i> Count</a></li>
-    <li><a href="#alphabetical"><i class="ri-character-recognition-line"></i> Alphabetical</a></li>
-</ul>
+<nav id="sections">
+    <div id="nav-sections-container">
+        <ul>
+            <li>
+                <a href="#type-count">
+                    <i class="las la-folder"></i> Count
+                </a>
+            </li>
+            <li>
+                <a href="#type-alphabetical">
+                    <i class="las la-folder"></i> Alphabetical
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-<main id="index">
+<main id="entries">
+    <div id="main-entries-container">
+        <div class="section-title">
+            <h2 id="type-count"><i class="las la-sort-numeric-down"></i> Count</h2>
+        </div>
 
-    <h2 id="count">Count</h2>
-    <ul class="index_tag_list">
-    {{ range .Data.Terms.ByCount }}
-        <li><span class="label_{{ .Page.Title }}"><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></span> ({{ .Count }})</li>
-    {{ end }}
-    </ul>
+        <ul class="types-list">
+            {{ range .Data.Terms.ByCount }}
+            <li>
+                <span class="label_{{ .Page.Title }}">
+                    <a href="{{ .Page.Permalink }}"><i class="las la-folder"></i> {{ .Page.Title }}</a>
+                </span>
+                <span class="type-count">
+                    <sup>{{ .Count }}</sup>
+                </span>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+</main>
 
-    <h2 id="alphabetical">Alphabetical</h2>
-    <ul class="index_tag_list">
-    {{ range .Data.Terms.Alphabetical }}
-        <li><span class="label_{{ .Page.Title }}"><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></span> ({{ .Count }})</li>
-    {{ end }}
-    </ul>
+<main id="entries">
+    <div id="main-entries-container">
+        <div class="section-title">
+            <h2 id="type-alphabetical"><i class="las la-sort-alpha-down"></i> Alphabetical</h2>
+        </div>
 
+        <ul class="types-list">
+            {{ range .Data.Terms.Alphabetical }}
+            <li>
+                <span class="label_{{ .Page.Title }}">
+                    <a href="{{ .Page.Permalink }}"><i class="las la-folder"></i> {{ .Page.Title }}</a>
+                </span>
+                <span class="type-count">
+                    <sup>{{ .Count }}</sup>
+                </span>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
 </main>
 
 {{ end }}

@@ -1,34 +1,26 @@
 {{ define "main" }}
 
 <header>
-    <h1>{{ .Title }}</h1>
+    <div id="header-container">
+        <h1>{{ .Title }}</h1>
+    </div>
 </header>
 
-<main id="index">
-
-    <h2>{{ len .Pages }} Entries</h2>
-
-    <ul class="index_list">
-        {{ range .Pages }}
-        <li>
-            <h3><a href="{{ .Permalink }}" title="{{ .Params.title }}">{{ .Params.title }}</a></h3> <span class="label_{{ .Params.types }}"><a href="/types/{{ .Params.types }}/">{{ .Params.types }}</a></span>
-            
-            <div id="entry_id">
-                <i class="ri-information-line"></i>{{ .Params.id }} 
+<main id="entries">
+    <div id="main-entries-container">
+        <div class="section-title">
+            <h2 id="type-count"><i class="las la-file-alt"></i> Entries</h2>
+            <div class="count">
+                <p><i class="las la-file-alt"></i> {{ len .Pages }}</p>
             </div>
-            
-            <div id="entry_date">
-                <i class="ri-calendar-line"></i><date>{{ .Date.Format "2 January 2006" }}</date> {{ if .Params.updated }}<i class="ri-refresh-line"></i>{{ .Params.updated | dateFormat "2 January 2006" }}{{ end }}
-            </div>
-        
-            <div id="entry_tags">
-                <i class="ri-hashtag"></i>{{ range .Params.tags }}<a href="/tags/{{ . | urlize }}">{{ . }}</a>{{ end }}
-            </div>
-        </li>
-        
-        {{ end }}
-    </ul>
+        </div>
 
+        <ul class="index_list">
+            {{ range .Pages }}
+                {{- partial "index_list.html" . -}}
+            {{ end }}
+        </ul>
+    </div>
 </main>
 
 {{ end }}

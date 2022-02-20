@@ -6,13 +6,11 @@
         </tr>
     </thead>
     <tbody>
-        {{ range .Site.Data.reading_list }}
-        {{ range sort .Books "title" }}
+        {{ range .Site.Data.reading_list }} {{ range sort .Books "title" }}
         <tr>
             <td>{{ .title }}</td>
             <td>{{ .author }}</td>
-        </tr>    
-        {{ end }}
-        {{ end }}
+        </tr>
+        {{ end }} {{ end }}
     </tbody>
 </table>
