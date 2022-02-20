@@ -1,1 +1,4 @@
-<p>Random Book from List: <strong>{{ range .Site.Data.reading_list }}{{ range sort .Books "title" | shuffle | first 1 }}{{ .title }} by {{ .author }}{{ end }}{{ end }}</strong></p>
+<p>
+    Random Book from List:
+    <strong>{{ range .Site.Data.reading_list }}{{ range sort .Books "title" | shuffle | first 1 }}{{ .title }} by {{ .author }}{{ end }}{{ end }}</strong>
+</p>

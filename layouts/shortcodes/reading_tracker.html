@@ -13,15 +13,15 @@
     </thead>
     <tbody>
         {{ range .Books }}
-            <tr>
-                <td>{{ .Book }}</td>
-                <td>{{ .Series }}</td>
-                <td>{{ .Author }}</td>
-                <td>{{ .Started }}</td>
-                <td>{{ .Finished }}</td>
-                <td>{{ .Rating }}</td>
-                <td><a>{{ .Summary }}</a></td>
-            </tr>    
+        <tr>
+            <td>{{ .Book }}</td>
+            <td>{{ .Series }}</td>
+            <td>{{ .Author }}</td>
+            <td>{{ .Started }}</td>
+            <td>{{ .Finished }}</td>
+            <td>{{ .Rating }}</td>
+            <td><a>{{ .Summary }}</a></td>
+        </tr>
         {{ end }}
     </tbody>
 </table>

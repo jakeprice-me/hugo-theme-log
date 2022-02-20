@@ -7,15 +7,12 @@
         </tr>
     </thead>
     <tbody>
-    {{ range .Site.Data }}
-        {{ range .Bookmarks }}
-            <tr>
-                <td>{{ .date }}</td>
-                <td><a href="{{ .url }}">{{ .title }}</a></td>
-                <td>{{ .tags }}</td>
-            </tr>    
-        {{ end }}
-    {{ end }}
+        {{ range .Site.Data }} {{ range .Bookmarks }}
+        <tr>
+            <td>{{ .date }}</td>
+            <td><a href="{{ .url }}">{{ .title }}</a></td>
+            <td>{{ .tags }}</td>
+        </tr>
+        {{ end }} {{ end }}
     </tbody>
-
 </table>
