@@ -142,7 +142,9 @@
     {{- $backlinks := $.Scratch.Get "backlinks" -}}
 
     {{ if le (len $backlinks) 0 }}
-    <p>No references to this entry.</p>
+    <ul>
+        <li>No references to this entry.</li>
+    </ul>
     {{ end }}
 <!-- End Backlinks -->
     {{ $related := .Site.RegularPages.Related . | first 5 }}
