@@ -1493,6 +1493,10 @@ aside#related {
     border-radius: 2rem;
 }
 
+#aside-related-container h3:not(:first-child) {
+    margin: 1.5rem 0 1rem 0;
+}
+
 #aside-related-container h3 {
     margin: 0 0 1rem 0;
     padding: 0 0 1.5rem 0;
@@ -1510,13 +1514,8 @@ aside#related {
 #aside-related-container li {
     padding: 0 0 1rem 0;
     display: flex;
-    align-items: center; 
-}
-
-#aside-related-container p {
-    padding: 0 0 2rem 0;
     font-size: 1.6rem;
-
+    align-items: center; 
 }
 
 #aside-entry a:link,
