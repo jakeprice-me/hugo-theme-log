@@ -1,0 +1,60 @@
+
+<section id="frontmatter">
+    <div id="section-frontmatter-container">
+        <ul>
+            <li id="section-frontmatter-container-li-row-1">
+                <div id="entry-id">
+                    <i class="las la-info-circle"></i>
+                    {{ .Params.id }}
+                </div>
+                <div id="entry-type">
+                    <i class="ri-folder-info-line"></i>
+                    <span class="label_{{ .Params.types }}">
+                        <a href="/types/{{ .Params.types }}/">
+                            <i class="las la-folder"></i>
+                            {{ .Params.types }}
+                        </a>
+                    </span>
+                </div>
+            </li>
+
+            <li id="entry-date">
+                <i class="las la-calendar"></i>
+                <date>{{ .Date.Format "2 January 2006 15:04" }}</date>
+            </li>
+
+            {{ if .Params.modified }}
+            <li id="entry-modified">
+                <i class="las la-calendar-plus"></i>
+                <date>{{ .Params.modified | dateFormat "2 January 2006 15:04" }}</date>
+            </li>
+            {{ end }}
+
+            <li id="entry-reading-time">
+                <i class="las la-stopwatch"></i>
+                {{ .ReadingTime }} min read
+            </li>
+
+            {{ if .Params.link }}
+            <li id="entry-link">
+                <div id="entry_original">
+                    <i class="las la-external-link-alt"></i>
+                    <a href="{{ .Params.link }}" title="{{ .Params.link }}" target="_blank">Original Link</a>
+                </div>
+            </li>
+            {{ end }}
+
+            <ul id="entry-tags">
+                {{ range .Params.tags }}
+                    <li id="entry-tags">
+                        <a href="/tags/{{ . | urlize }}">
+                            <i class="las la-hashtag"></i>
+                            {{ . }}
+                        </a>
+                    </li>
+                {{ end }}
+            </ul>
+
+        </ul>
+    </div>
+</section>
