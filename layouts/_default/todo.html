@@ -1,39 +1,39 @@
 {{- partial "head.html" . -}}
 {{- partial "main_nav.html" . -}}
 
-<div id="title" class="label_{{ .Params.types }}">
-    <h1>{{ .Title }}</h1>
-</div>
-
-<div class="entry">
-    <div id="entry_id">
-        <i class="ri-information-line"></i>
-        {{ .Params.id }}
+<header>
+    <div id="header-container">
+        <h1>{{ .Title }}</h1>
     </div>
+</header>
 
-    <div id="entry_date">
-        <i class="ri-calendar-line"></i>
-        <date>{{ .Date.Format "2 January 2006" }}</date>
-        {{ if .Params.updated }}
-        <i class="ri-refresh-line"></i>
-        {{ .Params.updated | dateFormat "2 January 2006" }}{{ end }}
+<nav id="sections">
+    <div id="nav-sections-container">
+        <ul>
+            <li>
+                <a href="#referenced-by">
+                    <i class="las la-link"></i> Referenced By
+                </a>
+            </li>
+            <li>
+                <a href="#related-entries">
+                    <i class="las la-project-diagram"></i> Related Entries
+                </a>
+            </li>
+            <li>
+                <a href="#open-in">
+                    <i class="las la-pen"></i> Open Entry-In
+                </a>
+            </li>
+        </ul>
     </div>
+</nav>
 
-    <div id="entry_type">
-        <i class="ri-folder-info-line"></i>
-        <span class="label_{{ .Params.types }}">{{ .Params.types }}</span>
-    </div>
+{{- partial "entry-details.html" . -}}
 
-    <div id="entry_tags">
-        <i class="ri-hashtag"></i>
-        {{ range .Params.tags }}
-        <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">{{ . }}</a>
-        {{ end }}
-    </div>
-</div>
+<article id="entry-content">
+    <div id="article-entry-content-container">
 
-<div id="padding_container">
-    <article id="main-entry">
         <p><em>The contents of this page is dynamically created.</em></p>
 
         <h2>Priority Focus</h2>
@@ -90,6 +90,10 @@
             </li>
             {{ end }}
         </ul>
-    </article>
-</div>
+
+    </div>
+</article>
+
+{{- partial "entry-bottom.html" . -}}
+
 {{- partial "footer.html" . -}}
