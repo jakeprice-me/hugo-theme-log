@@ -29,65 +29,7 @@
     </div>
 </nav>
 
-<section id="frontmatter">
-    <div id="section-frontmatter-container">
-        <ul>
-            <li id="section-frontmatter-container-li-row-1">
-                <div id="entry-id">
-                    <i class="las la-info-circle"></i>
-                    {{ .Params.id }}
-                </div>
-                <div id="entry-type">
-                    <i class="ri-folder-info-line"></i>
-                    <span class="label_{{ .Params.types }}">
-                        <a href="/types/{{ .Params.types }}/">
-                            <i class="las la-folder"></i>
-                            {{ .Params.types }}
-                        </a>
-                    </span>
-                </div>
-            </li>
-
-            <li id="entry-date">
-                <i class="las la-calendar"></i>
-                <date>{{ .Date.Format "2 January 2006 15:04" }}</date>
-            </li>
-
-            {{ if .Params.modified }}
-            <li id="entry-modified">
-                <i class="las la-calendar-plus"></i>
-                <date>{{ .Params.modified | dateFormat "2 January 2006 15:04" }}</date>
-            </li>
-            {{ end }}
-
-            <li id="entry-reading-time">
-                <i class="las la-stopwatch"></i>
-                {{ .ReadingTime }} min read
-            </li>
-
-            {{ if .Params.link }}
-            <li id="entry-link">
-                <div id="entry_original">
-                    <i class="las la-external-link-alt"></i>
-                    <a href="{{ .Params.link }}" title="{{ .Params.link }}" target="_blank">Original Link</a>
-                </div>
-            </li>
-            {{ end }}
-
-            <ul id="entry-tags">
-                {{ range .Params.tags }}
-                    <li id="entry-tags">
-                        <a href="/tags/{{ . | urlize }}">
-                            <i class="las la-hashtag"></i>
-                            {{ . }}
-                        </a>
-                    </li>
-                {{ end }}
-            </ul>
-
-        </ul>
-    </div>
-</section>
+{{- partial "entry-details.html" . -}}
 
 <article id="entry-content">
     <div id="article-entry-content-container">
@@ -95,86 +37,15 @@
         {{ $anchorFormatString := `<a href=%q title=%q class=%q>%s</a>` }}
         {{ $entryLinks := findRE `\[\[(\d+)\]\]` .Content }}
         {{ range $entryLinks }}
-          {{ $id := trim . "[]" }}
-          {{ $page := site.GetPage $id }}
-          {{ $anchor := printf $anchorFormatString $page.RelPermalink $page.Title "wikilink" $page.Title }}
-          {{ $content = replace $content . $anchor }}
+            {{ $id := trim . "[]" }}
+            {{ $page := site.GetPage $id }}
+            {{ $anchor := printf $anchorFormatString $page.RelPermalink $page.Title "wikilink" $page.Title }}
+            {{ $content = replace $content . $anchor }}
         {{ end }}
         {{ $content | safeHTML }}
     </div>
 </article>
 
-<a name="bottom"></a>
-<aside id="related">
-    <div id="aside-related-container">
-    <!-- Backlinks section taken from https://github.com/crisrojas/Zettels -->
-    {{ $firstBracket := "\\[\\[" }}
-    {{ $lastBracket := "\\]\\]" }}
-    {{ $filename := .File.BaseFileName }}
-    {{ $wikilink :=  printf "%s%s%s" $firstBracket $filename $lastBracket }}
-
-    <h3 id="referenced-by"><i class="las la-link"></i> Referenced By</h3>
-    <ul>
-    {{- $.Scratch.Add "backlinks" slice -}}
-    {{- range .Site.RegularPages -}}
-        {{ if (findRE $wikilink .Content) }}
-            {{ $.Scratch.Set "title" .Title }}
-            {{ $title := $.Scratch.Get "title" }}
-            {{ $.Scratch.Add "backlinks" (dict .Permalink $title) }}
-            <li>
-                <div id="aside-entry">
-                    <a href="{{ .Permalink }}">{{ $title }}</a>
-                </div>
-                <div id="aside-type">
-                    <span class="label_{{ .Params.types }}">
-                        <a href="/types/{{ .Params.types }}/">
-                            <i class="las la-folder"></i>
-                            {{ .Params.types }}
-                        </a>
-                    </span>
-                </div>
-            </li>
-        {{ end }}
-    {{ end }}
-
-    </ul>
-
-    {{- $backlinks := $.Scratch.Get "backlinks" -}}
-
-    {{ if le (len $backlinks) 0 }}
-    <ul>
-        <li>No references to this entry.</li>
-    </ul>
-    {{ end }}
-<!-- End Backlinks -->
-    {{ $related := .Site.RegularPages.Related . | first 5 }}
-    {{ with $related }}
-    <h3 id="related-entries"><i class="las la-project-diagram"></i> Related Entries</h3>
-    <ul>
-        {{ range . }}
-        <li>
-                <div id="aside-entry">
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
-                </div>
-                <div id="aside-type">
-                    <span class="label_{{ .Params.types }}">
-                        <a href="/types/{{ .Params.types }}/">
-                            <i class="las la-folder"></i>
-                            {{ .Params.types }}
-                        </a>
-                    </span>
-                </div>
-        </li>
-        {{ end }}
-    </ul>
-    {{ end }}
-    <h3 id="open-in"><i class="las la-pen"></i> Open Entry In</h3>
-    <ul id="open-entry-in">
-        <li id="vim"><a href="guivim:///home/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i class="las la-laptop-code"></i> Vim</a></li>
-        <li id="vim"><a href="mvim://open?url=file:///Users/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i class="las la-laptop-code"></i> MacVim</a></li>
-        <li id="obsidian"><a href="obsidian://open?vault={{ .Site.Params.obsidian_vault }}&file={{ .Params.id }}.md"><i class="las la-mobile"></i> Obsidian</a></li>
-    </ul>
-</div>
-</aside>
+{{- partial "entry-bottom.html" . -}}
 
 {{- partial "footer.html" . -}}
