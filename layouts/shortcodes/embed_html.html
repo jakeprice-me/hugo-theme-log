@@ -1,2 +1,5 @@
 {{ $file := .Get "file" }}
-<iframe src="{{ $file }}" title="Test"></iframe>
+<figure class="full-width">
+    <iframe class="full-width" src="{{ $file }}"></iframe>
+    <figcaption>Local Copy: <a href="{{ $file }}">{{ $file }}</a></figcaption>
+</figure>
