@@ -1,6 +1,7 @@
 <p><a href="guivim:///{{ .Site.Params.root_dir }}/data-csv/habit_tracker.csv">Edit Habits in Vim</a></p>
 <table>
-    {{ $url := "/data-csv/habit_tracker.csv" }} {{ $sep := "|" }} {{ range $i, $r := getCSV $sep $url }} {{ if eq $i 0 }}
+    {{ $url := "/data-csv/habit_tracker.csv" }} {{ $sep := "|" }} {{ range $i, $r := getCSV $sep $url }}
+    {{ if eq $i 0 }}
     <thead>
         <tr>
             {{ range $r }}
@@ -9,12 +10,13 @@
         </tr>
     </thead>
     {{else}}
-    <tbody>
-        <tr>
-            {{ range $r }}
-            <td>{{ . }}</td>
-            {{end}}
-        </tr>
-    </tbody>
-    {{end}} {{ end }}
+        <tbody>
+            <tr>
+                {{ range $r }}
+                <td>{{ . }}</td>
+                {{end}}
+            </tr>
+        </tbody>
+        {{end}} 
+    {{ end }}
 </table>
