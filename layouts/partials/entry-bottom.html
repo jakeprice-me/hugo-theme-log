@@ -10,24 +10,24 @@
         <ul>
             {{- $.Scratch.Add "backlinks" slice -}}
             {{- range .Site.RegularPages -}}
-                {{ if (findRE $wikilink .Content) }}
-                {{ $.Scratch.Set "title" .Title }}
-                {{ $title := $.Scratch.Get "title" }}
-                {{ $.Scratch.Add "backlinks" (dict .Permalink $title) }}
-                <li>
-                    <div id="aside-entry">
-                        <a href="{{ .Permalink }}">{{ $title }}</a>
-                    </div>
-                    <div id="aside-type">
-                        <span class="label_{{ .Params.types }}">
-                            <a href="/types/{{ .Params.types }}/">
-                                <i class="las la-folder"></i>
-                                {{ .Params.types }}
-                            </a>
-                        </span>
-                    </div>
-                </li>
-                {{ end }}
+            {{ if (findRE $wikilink .Content) }}
+            {{ $.Scratch.Set "title" .Title }}
+            {{ $title := $.Scratch.Get "title" }}
+            {{ $.Scratch.Add "backlinks" (dict .Permalink $title) }}
+            <li>
+                <div id="aside-entry">
+                    <a href="{{ .Permalink }}">{{ $title }}</a>
+                </div>
+                <div id="aside-type">
+                    <span class="label_{{ .Params.types }}">
+                        <a href="/types/{{ .Params.types }}/">
+                            <i class="las la-folder"></i>
+                            {{ .Params.types }}
+                        </a>
+                    </span>
+                </div>
+            </li>
+            {{ end }}
             {{ end }}
 
         </ul>
@@ -64,10 +64,10 @@
         <h3 id="open-in"><i class="las la-pen"></i> Open Entry In</h3>
         <ul id="open-entry-in">
             <li id="vim"><a href="guivim:///home/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i
-                        class="las la-laptop-code"></i> Vim</a></li>
+                        class="lab la-linux"></i> Vim</a></li>
             <li id="vim"><a
                     href="mvim://open?url=file:///Users/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i
-                        class="las la-laptop-code"></i> MacVim</a></li>
+                        class="lab la-apple"></i> MacVim</a></li>
             <li id="obsidian"><a
                     href="obsidian://open?vault={{ .Site.Params.obsidian_vault }}&file={{ .Params.id }}.md"><i
                         class="las la-mobile"></i> Obsidian</a></li>
