@@ -22,15 +22,33 @@
         <date>{{ .Date.Format "2 January 2006 15:04" }}</date>
     </div>
 
-    <ul id="entry-tags">
-        {{ range .Params.tags }}
-        <li>
-            <a href="/tags/{{ . | urlize }}">
-                <i class="las la-hashtag"></i>
-                {{ . }}
-            </a>
-        </li>
-        {{ end }}
-    </ul>
+    {{ if .Params.link }}
+    <div id="entry-link">
+        <div id="entry_original">
+            <i class="las la-external-link-alt"></i>
+            <a href="{{ .Params.link }}" title="{{ .Params.link }}" target="_blank">Original Link</a>
+        </div>
+    </div>
+    {{ end }}
+    <div id="row-1">
+        <ul id="entry-tags">
+            {{ range .Params.tags }}
+            <li>
+                <a href="/tags/{{ . | urlize }}">
+                    <i class="las la-hashtag"></i>
+                    {{ . }}
+                </a>
+            </li>
+            {{ end }}
+        </ul>
 
+        <ul id="index-open-entry-in">
+            <li id="vim"><a href="guivim:///home/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i class="lab la-linux"></i></a></li>
+            <li id="vim"><a
+                    href="mvim://open?url=file:///Users/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i class="lab la-apple"></i></a></li>
+            <li id="obsidian"><a
+                    href="obsidian://open?vault={{ .Site.Params.obsidian_vault }}&file={{ .Params.id }}.md"><i
+                        class="las la-mobile"></i></a></li>
+        </ul>
+    </div>
 </li>
