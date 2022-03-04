@@ -61,16 +61,5 @@
             {{ end }}
         </ul>
         {{ end }}
-        <h3 id="open-in"><i class="las la-pen"></i> Open Entry In</h3>
-        <ul id="open-entry-in">
-            <li id="vim"><a href="guivim:///home/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i
-                        class="lab la-linux"></i> Vim</a></li>
-            <li id="vim"><a
-                    href="mvim://open?url=file:///Users/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i
-                        class="lab la-apple"></i> MacVim</a></li>
-            <li id="obsidian"><a
-                    href="obsidian://open?vault={{ .Site.Params.obsidian_vault }}&file={{ .Params.id }}.md"><i
-                        class="las la-mobile"></i> Obsidian</a></li>
-        </ul>
     </div>
 </aside>
