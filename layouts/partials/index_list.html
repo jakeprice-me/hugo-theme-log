@@ -1,4 +1,5 @@
 <li>
+
     <div id="row-0">
         <h3><a href="{{ .Permalink }}" title="{{ .Params.title }}">{{ .Params.title }}</a></h3>
         <div id="entry-type">
@@ -30,6 +31,7 @@
         </div>
     </div>
     {{ end }}
+
     <div id="row-1">
         <ul id="entry-tags">
             {{ range .Params.tags }}
@@ -42,13 +44,7 @@
             {{ end }}
         </ul>
 
-        <ul id="index-open-entry-in">
-            <li id="vim"><a href="guivim:///home/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i class="lab la-linux"></i></a></li>
-            <li id="vim"><a
-                    href="mvim://open?url=file:///Users/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i class="lab la-apple"></i></a></li>
-            <li id="obsidian"><a
-                    href="obsidian://open?vault={{ .Site.Params.obsidian_vault }}&file={{ .Params.id }}.md"><i
-                        class="las la-mobile"></i></a></li>
-        </ul>
+        {{- partial "open_in.html" . -}}
     </div>
+
 </li>
