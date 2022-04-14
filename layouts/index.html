@@ -55,8 +55,14 @@
 
 <main id="entries">
     <div id="main-entries-container">
+        {{ $pinned := (where .Site.RegularPages ".Params.pinned" "==" true) }}
+        {{ $pinned_count := len $pinned }}
+
         <div class="section-title">
             <h2 id="pinned"><i class="las la-thumbtack"></i> Pinned Entries</h2>
+            <div class="count">
+                <p><i class="las la-file-alt"></i> {{ $pinned_count }}</p>
+            </div>
         </div>
         <ul class="index_list">
         {{ range .Site.RegularPages }}
@@ -72,9 +78,12 @@
     <div id="main-entries-container">
         <div class="section-title">
             <h2 id="random"><i class="las la-random"></i> Random Entry</h2>
+            <div class="count">
+                <p><i class="las la-file-alt"></i> 1</p>
+            </div>
         </div>
         <ul class="index_list">
-        {{ range first 1 (shuffle (where (where .Site.RegularPages ".Params.types" "!=" "title") ".Params.types" "!=" "done")) }}
+        {{ range first 1 (shuffle (where (where (where .Site.RegularPages ".Params.types" "!=" "title") ".Params.types" "!=" "done") ".Params.types" "!=" "function")) }}
             {{- partial "index_list.html" . -}}
         {{ end }}
         </ul>
@@ -92,7 +101,7 @@
         </div>
 
         <ul class="index_list">
-        {{ range first 5 (where .Site.RegularPages.ByLastmod.Reverse ".Params.types" "!=" "done") }}
+        {{ range first 5 (where (where .Site.RegularPages.ByLastmod.Reverse ".Params.types" "!=" "done") ".Params.types" "!=" "function")  }}
             {{- partial "index_list.html" . -}}
         {{ end }}
         </ul>
@@ -120,7 +129,7 @@
 
 <main id="entries">
     <div id="main-entries-container">
-        {{ $log := (where .Site.RegularPages ".Params.types" "!=" "title") }}
+        {{ $log := (where (where (where .Site.RegularPages ".Params.types" "!=" "title") ".Params.types" "!=" "done") ".Params.types" "!=" "function") }}
         {{ $logCount := len $log }}
         <div class="section-title">
             <h2 id="log">
@@ -131,7 +140,7 @@
             </div>
         </div>
         <ul class="index_list">
-        {{ range (where (where .Site.RegularPages ".Params.types" "!=" "title") ".Params.types" "!=" "done") }}
+        {{ range (where (where (where .Site.RegularPages ".Params.types" "!=" "title") ".Params.types" "!=" "done") ".Params.types" "!=" "function") }}
             {{- partial "index_list.html" . -}}
         {{ end }}
         </ul>
