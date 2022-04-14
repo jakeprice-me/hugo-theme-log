@@ -2,7 +2,7 @@
 id: {{ .File.TranslationBaseName }}
 title: 
 date: {{ .Date }}
-updated: 
+modified: 
 type: 
 pinned: false
 tags: []
