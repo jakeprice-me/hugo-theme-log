@@ -1,0 +1,6 @@
+<ul id="index-open-entry-in">
+    <li id="vim"><a href="guivim:///home/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i class="lab la-linux"></i></a></li>
+    <li id="macvim"><a href="mvim://open?url=file:///Users/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i class="lab la-apple"></i></a></li>
+    <li id="obsidian"><a href="obsidian://open?vault={{ .Site.Params.obsidian_vault }}&file={{ .Params.id }}.md"><i class="las la-mobile"></i></a></li>
+    <li id="vscode"><a href="{{ .Site.Params.vscode_editor }}://file//home/{{ .Site.Params.root_dir }}/content/{{ .Params.id }}.md"><i class="las la-code"></i></a></li>
+</ul>
