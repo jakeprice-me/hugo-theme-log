@@ -214,7 +214,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
   /* :::: Font Size :::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
   --main: 1.6rem;
-  --code: 1.8rem;
+  --code: 1.7rem;
 
   /* :::: Colour ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
   --blue-grey-100: #cfd8dc;
@@ -223,6 +223,8 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
   --blue-grey-600: #546e7a;
   --blue-grey-800: #37474f;
   --blue-grey-900: #263238;
+  --blue-100: #bbdefb;
+  --blue-900: #0d47a1;
   --deep-purple-100: #d1c4e9;
   --deep-purple-900: #311b92;
   --green-100: #c8e6c9;
@@ -381,6 +383,22 @@ nav#types {
     height: 1rem;
 }
 
+aside#archive-toc {
+    padding: 2rem;
+    background: var(--blue-grey-50);
+}
+
+#aside-archive-toc-container {
+    padding: 2rem;
+    background: var(--white);
+    font-size: 1.6rem;
+    border-radius: 2rem;
+}
+
+#aside-archive-toc-container ul {
+    margin: 0 0 0 1rem;
+}
+
 main#entries {
     padding: 2rem;
     background: var(--blue-grey-50);
@@ -504,6 +522,7 @@ ul#entry-tags {
 
 ul#index-open-entry-in {
     white-space: nowrap;
+    text-align: right;
 }
 
 #index-open-entry-in li {
@@ -1536,10 +1555,24 @@ aside#related {
     text-decoration: none;
 }
 
+#macvim a:link,
+#macvim a:visited {
+    color: #212121;
+    background-color: #E0E0E0;
+    text-decoration: none;
+}
+
 #obsidian a:link,
 #obsidian a:visited {
     color: var(--deep-purple-900);
     background-color: var(--deep-purple-100);
+    text-decoration: none;
+}
+
+#vscode a:link,
+#vscode a:visited {
+    color: var(--deep-purple-900);
+    background-color: var(--blue-100);
     text-decoration: none;
 }
 
@@ -1608,6 +1641,16 @@ span[class*="label_"] {
     border-radius: 2rem;
 }
 
+.label_function {
+    color: var(--white);
+    background-color: var(--blue-grey-800);
+}
+
+.label_function a {
+    color: var(--white);
+    text-decoration: none;
+}
+
 .label_title {
     color: #004d40;
     background-color: #e0f2f1;
@@ -1660,13 +1703,13 @@ span[class*="label_"] {
 }
 
 .label_bookmark {
-    color: var(--blue-grey-50);
-    background-color: var(--blue-grey-800);
+    color: #e8eaf6;
+    background-color: #1a237e;
 }
 
 .label_bookmark a {
-    color: var(--blue-grey-50);
-    background-color: var(--blue-grey-800);
+    color: #e8eaf6;
+    background-color: #1a237e;
     text-decoration: none;
 }
 
@@ -1867,6 +1910,11 @@ footer {
     }
 
     #section-built-container {
+        margin: 0 auto;
+        width: 640px;
+    }
+
+    #aside-archive-toc-container {
         margin: 0 auto;
         width: 640px;
     }
