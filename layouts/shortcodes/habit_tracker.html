@@ -1,4 +1,7 @@
-<p><a href="guivim:///{{ .Site.Params.root_dir }}/data-csv/habit_tracker.csv">Edit Habits in Vim</a></p>
+<ul id="index-open-entry-in">
+    <li id="vim"><a href="gte:///home/{{ .Site.Params.root_dir }}/data-csv/habit_tracker.csv"><i class="las la-pen"></i></a></li>
+    <li id="obsidian"><a href="obsidian://open?vault={{ .Site.Params.obsidian_vault }}&file=data-csv/habit_tracker.csv"><i class="las la-mobile"></i></a></li>
+</ul>
 <table>
     {{ $url := "/data-csv/habit_tracker.csv" }} {{ $sep := "|" }} {{ range $i, $r := getCSV $sep $url }}
     {{ if eq $i 0 }}
