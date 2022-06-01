@@ -1777,12 +1777,12 @@ span[class*="label_"] {
     text-decoration: none;
 }
 
-.label_todo-f {
+.label_todo-p {
     color: var(--red-50);
     background-color: #b71c1c;
 }
 
-.label_todo-f a {
+.label_todo-p a {
     color: var(--red-50);
     background-color: #b71c1c;
     text-decoration: none;
