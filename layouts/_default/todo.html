@@ -36,9 +36,9 @@
 
         <p><em>The contents of this page is dynamically created.</em></p>
 
-        <h2>Priority Focus</h2>
+        <h2>Priority</h2>
         <ul>
-            {{ range (where .Site.RegularPages ".Params.types" "todo-f") }}
+            {{ range (where .Site.RegularPages ".Params.types" "todo-p") }}
             <li>
                 <date>{{ .Date.Format "2006-01-02 15:04:05" }}</date>
                 {{ .Params.id }}
