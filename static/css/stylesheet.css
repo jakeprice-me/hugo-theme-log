@@ -477,6 +477,7 @@ main#entries {
     padding: 0.5rem 0 0.5rem 0;
     font-family: var(--sans-serif);
     font-size: 1.6rem;
+    line-height: 2.5rem;
 }
 
 #main-entries-container li #entry-link a:link,
@@ -619,6 +620,7 @@ section#frontmatter {
 
 #section-frontmatter-container li#entry-link {
     font-size: 1.6rem;
+    line-height: 2.5rem;
 }
 
 #section-frontmatter-container li#entry-link a:link,
@@ -1823,13 +1825,24 @@ span[class*="label_"] {
 }
 
 .label_done {
-    color: #212121;
-    background-color: var(--blue-grey-50);
+    color: #ffffff;
+    background-color: #4caf50;
 }
 
 .label_done a {
-    color: #212121;
-    background-color: var(--blue-grey-50);
+    color: #ffffff;
+    background-color: #4caf50;
+    text-decoration: none;
+}
+
+.label_start {
+    color: #ffffff;
+    background-color: #e91e63;
+}
+
+.label_start a {
+    color: #ffffff;
+    background-color: #e91e63;
     text-decoration: none;
 }
 
