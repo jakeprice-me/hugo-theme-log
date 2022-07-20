@@ -475,6 +475,7 @@ main#entries {
 
 #main-entries-container li #entry-link {
     padding: 0.5rem 0 0.5rem 0;
+    word-wrap: break-word;
     font-family: var(--sans-serif);
     font-size: 1.6rem;
     line-height: 2.5rem;
