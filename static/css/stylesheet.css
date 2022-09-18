@@ -1559,6 +1559,13 @@ aside#related {
     text-decoration: none;
 }
 
+#fb a:link,
+#fb a:visited {
+    color: var(--blue-900);
+    background-color: var(--blue-100);
+    text-decoration: none;
+}
+
 #macvim a:link,
 #macvim a:visited {
     color: #212121;
