@@ -1582,7 +1582,7 @@ aside#related {
 
 #vscode a:link,
 #vscode a:visited {
-    color: var(--deep-purple-900);
+    color: var(--blue-900);
     background-color: var(--blue-100);
     text-decoration: none;
 }
