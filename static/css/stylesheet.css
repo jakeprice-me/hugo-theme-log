@@ -1683,12 +1683,12 @@ span[class*="label_"] {
 }
 
 .label_tech-note {
-    color: #fce4ec;
-    background-color: #ad1457;
+    color: #e0f7fa;
+    background-color: #00838f;
 }
 
 .label_tech-note a {
-    color: #fce4ec;
+    color: #e0f7fa;
     text-decoration: none;
 }
 
@@ -1703,6 +1703,16 @@ span[class*="label_"] {
     text-decoration: none;
 }
 
+.label_health {
+    color: #fce4ec;
+    background-color: #ec407a;
+}
+
+.label_health a {
+    color: #fce4ec;
+    text-decoration: none;
+}
+
 .label_tech-archive {
     color: #3e2723;
     background-color: #efebe9;
@@ -1714,13 +1724,12 @@ span[class*="label_"] {
 }
 
 .label_bookmark {
-    color: #e8eaf6;
-    background-color: #1a237e;
+    color: #4e342e;
+    background-color: #d7ccc8;
 }
 
 .label_bookmark a {
-    color: #e8eaf6;
-    background-color: #1a237e;
+    color: #4e342e;
     text-decoration: none;
 }
 
@@ -1767,13 +1776,12 @@ span[class*="label_"] {
 }
 
 .label_org {
-    color: #e0f2f1;
-    background-color: #009688;
+    color: #e65100;
+    background-color: #ffe0b2;
 }
 
 .label_org a {
-    color: #e0f2f1;
-    background-color: #009688;
+    color: #e65100;
     text-decoration: none;
 }
 
