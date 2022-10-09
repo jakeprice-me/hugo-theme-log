@@ -75,9 +75,16 @@
             {{- partial "index_list.html" . -}}
         {{ end }}
         </ul>
-        <!-- Hugo's default pagination template. -->
-        {{ template "_internal/pagination.html" . }}
     </div>
 </main>
+
+<div id="pagination">
+    <div id="div-pagination-container">
+
+        <!-- Hugo's default pagination template. -->
+        {{ template "_internal/pagination.html" . }}
+
+    </div>
+</div>
 
 {{ end }}
