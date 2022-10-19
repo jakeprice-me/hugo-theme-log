@@ -641,6 +641,10 @@ section#frontmatter {
     border-radius: 2rem;
 }
 
+#section-frontmatter-container ul {
+     word-wrap: break-word;
+}
+
 #section-frontmatter-container li {
     padding: 0.5rem 0 0.5rem 0;
 }
