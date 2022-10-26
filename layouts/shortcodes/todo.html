@@ -1,55 +1,51 @@
-<h2>Priority</h2>
-<ul>
-    {{ range (where .Site.RegularPages ".Params.types" "todo-p") }}
-    <li>
-        <date>{{ .Date.Format "2006-01-02 15:04:05" }}</date>
-        {{ .Params.id }}
-        <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
-    </li>
-    {{ end }}
-</ul>
+<section id="todo">
+    <h2>Priority</h2>
+    <ul>
+        {{ range (where .Site.RegularPages ".Params.types" "todo-p") }}
+        <li>
+            <date>{{ .Date.Format "2006-01-02" }}</date>
+            <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
 
-<h2>Priority 1</h2>
-<ul>
-    {{ range (where .Site.RegularPages ".Params.types" "todo-1") }}
-    <li>
-        <date>{{ .Date.Format "2006-01-02 15:04:05" }}</date>
-        {{ .Params.id }}
-        <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
-    </li>
-    {{ end }}
-</ul>
+    <h2>Priority 1</h2>
+    <ul>
+        {{ range (where .Site.RegularPages ".Params.types" "todo-1") }}
+        <li>
+            <date>{{ .Date.Format "2006-01-02" }}</date>
+            <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
 
-<h2>Priority 2</h2>
-<ul>
-    {{ range (where .Site.RegularPages ".Params.types" "todo-2") }}
-    <li>
-        <date>{{ .Date.Format "2006-01-02 15:04:05" }}</date>
-        {{ .Params.id }}
-        <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
-    </li>
-    {{ end }}
-</ul>
+    <h2>Priority 2</h2>
+    <ul>
+        {{ range (where .Site.RegularPages ".Params.types" "todo-2") }}
+        <li>
+            <date>{{ .Date.Format "2006-01-02" }}</date>
+            <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
 
-<h2>Priority 3</h2>
-<ul>
-    {{ range (where .Site.RegularPages ".Params.types" "todo-3") }}
-    <li>
-        <date>{{ .Date.Format "2006-01-02 15:04:05" }}</date>
-        {{ .Params.id }}
-        <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
-    </li>
-    {{ end }}
-</ul>
+    <h2>Priority 3</h2>
+    <ul>
+        {{ range (where .Site.RegularPages ".Params.types" "todo-3") }}
+        <li>
+            <date>{{ .Date.Format "2006-01-02" }}</date>
+            <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
 
-<h2 class="todo_done">Done</h2>
-<ul>
-    {{ range (where .Site.RegularPages ".Params.types" "done") }}
-    <li class="todo_done">
-        <date>{{ .Date.Format "2006-01-02 15:04:05" }}</date>
-        {{ .Params.id }}
-        <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
-    </li>
-    {{ end }}
-</ul>
-
+    <h2 class="todo_done">Done</h2>
+    <ul>
+        {{ range (where .Site.RegularPages ".Params.types" "done") }}
+        <li class="todo_done">
+            <date>{{ .Date.Format "2006-01-02" }}</date>
+            <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+</section>
