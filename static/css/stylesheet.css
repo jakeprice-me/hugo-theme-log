@@ -690,6 +690,10 @@ article#entry-content {
     background: var(--white);
 }
 
+.todo_done {
+    opacity: 50%;
+}
+
 #article-entry-content-container {
     font-family: var(--sans-serif);
     font-size: 1.6rem;
