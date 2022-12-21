@@ -737,6 +737,57 @@ article h6 {
     color: var(--blue-grey-800);
 }
 
+article h1 a:link,
+article h2 a:link,
+article h3 a:link,
+article h4 a:link,
+article h5 a:link,
+article h6 a:link {
+    background: none;
+}
+
+article h1 a:visited,
+article h2 a:visited,
+article h3 a:visited,
+article h4 a:visited,
+article h5 a:visited,
+article h6 a:visited {
+    background: none;
+}
+
+article h1 a:hover,
+article h2 a:hover,
+article h3 a:hover,
+article h4 a:hover,
+article h5 a:hover,
+article h6 a:hover {
+    background: none;
+}
+
+article h1 a:hover:after,
+article h2 a:hover:after,
+article h3 a:hover:after,
+article h4 a:hover:after,
+article h5 a:hover:after,
+article h6 a:hover:after {
+    padding-left: 0.5rem;
+    font-family: "Line Awesome Free";
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 2.5rem;
+    content: "\f0c1";
+    opacity: 0.5;
+}
+
+article h1 a:active,
+article h2 a:active,
+article h3 a:active,
+article h4 a:active,
+article h5 a:active,
+article h6 a:active {
+    background: none;
+}
+
 article h1 {
     line-height: 3.8rem;
     font-size: 2.8rem;
