@@ -35,6 +35,11 @@
                 {{ .ReadingTime }} min read
             </li>
 
+            <li id="entry-private">
+                {{ if .Params.private }}<i class="las la-lock"></i> Private
+                {{ else }}<i class="las la-lock-open"></i> Public{{ end }}
+            </li>
+
             {{ if .Params.link }}
             <li id="entry-link">
                 <div id="entry_original">
@@ -60,6 +65,6 @@
 
             </div>
         </ul>
-        
+
     </div>
 </section>

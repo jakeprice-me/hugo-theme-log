@@ -1,8 +1,10 @@
 <li>
 
     <div id="row-0">
-        <h3><a href="{{ .Permalink }}" title="{{ .Params.title }}">{{ .Params.title }}</a></h3>
-        <div id="entry-type">
+        <h3>
+            <a href="{{ .Permalink }}" title="{{ .Params.title }}">{{ .Params.title }}</a>
+        </h3>
+        <div id="entry-type"> 
             <i class="ri-folder-info-line"></i>
             <span class="label_{{ .Params.types }}">
                 <a href="/types/{{ .Params.types }}/">
@@ -21,6 +23,11 @@
     <div id="entry-date">
         <i class="las la-calendar"></i>
         <date>{{ .Date.Format "2 January 2006 15:04" }}</date>
+    </div>
+
+    <div id="entry-private">
+        {{ if .Params.private }}<i class="las la-lock"></i> Private
+        {{ else }}<i class="las la-lock-open"></i> Public{{ end }}
     </div>
 
     {{ if .Params.link }}

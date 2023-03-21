@@ -473,6 +473,12 @@ main#entries {
     font-size: 1.6rem;
 }
 
+#main-entries-container li #entry-private {
+    padding: 0.5rem 0 0.5rem 0;
+    font-family: var(--sans-serif);
+    font-size: 1.6rem;
+}
+
 #main-entries-container li #entry-link {
     padding: 0.5rem 0 0.5rem 0;
     word-wrap: break-word;
@@ -670,6 +676,10 @@ section#frontmatter {
 }
 
 #section-frontmatter-container li#entry-reading-time {
+    font-size: 1.6rem;
+}
+
+#section-frontmatter-container li#entry-private {
     font-size: 1.6rem;
 }
 
