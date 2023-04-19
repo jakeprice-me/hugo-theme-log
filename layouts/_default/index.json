@@ -1,5 +1,5 @@
 {{- .Scratch.Add "index" slice -}}
 {{- range .Site.RegularPages -}}
-    {{ $.Scratch.Add "index" (dict "id" (string .Params.id) "title" (.Title | htmlUnescape | plainify) "pretty_date" (.Date.Format "2 January 2006 15:04") "date" (.Date.Unix) "tags" .Params.tags "url" .Permalink "link" .Params.link "types" .Params.types "content" (.Content | htmlUnescape | plainify | replaceRE "{{" "\\{\\{" | replaceRE "}}" "\\}\\}" )) }}
+    {{ $.Scratch.Add "index" (dict "id" (string .Params.id) "title" (.Title | htmlUnescape | plainify) "pretty_date" (.Date.Format "2 January 2006 15:04") "date" (.Date.Unix) "tags" .Params.tags "url" .Permalink "link" .Params.link "category" .Params.categories "types" .Params.types "content" (.Content | htmlUnescape | plainify | replaceRE "{{" "\\{\\{" | replaceRE "}}" "\\}\\}" )) }}
 {{- end -}}
 {{ $.Scratch.Get "index" | jsonify }}
