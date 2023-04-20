@@ -1,0 +1,41 @@
+{{ define "main" }}
+
+<header style="">
+    <div id="header-container">
+        <h1>{{ .Title }}</h1>
+    </div>
+</header>
+
+{{- range site.RegularPages.GroupByPublishDate "2006" }}
+<main id="entries">
+    <div id="main-entries-container">
+
+        <div class="section-title">
+            <h2>
+                <i class="las la-calendar"></i> {{ .Key }}
+            </h2>
+            <div class="count">
+                <p><i class="las la-file-alt"></i> {{ len .Pages }}</p>
+            </div>
+        </div>
+
+        {{- range .Pages.GroupByDate "January" }}
+        <div class="archive-month-title">
+            <h2>
+                <i class="las la-calendar-day"></i> {{ .Key }}
+            </h2>
+            <div class="count">
+                <p><i class="las la-file-alt"></i> {{ len .Pages }}</p>
+            </div>
+        </div>
+        <ul class="index_list">
+            {{- range .Pages }}
+            {{- partial "index_list.html" . -}}
+            {{- end }}
+        </ul>
+        {{- end }}
+    </div>
+</main>
+{{- end }}
+
+{{ end }}

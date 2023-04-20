@@ -417,6 +417,17 @@ main#entries {
     border-bottom: 0.1rem solid var(--blue-grey-50);
 }
 
+.archive-month-title {
+    display: flex;
+    align-items: center;
+    margin: 0 0 1.5rem 0;
+    border-bottom: 0.1rem solid var(--blue-grey-50);
+}
+
+div#main-entries-container div.archive-month-title h2 {
+    font-size: 1.8rem;
+}
+
 .count {
     padding: 0 0 1.5rem 0;
     font-size: 1.4rem;
@@ -428,6 +439,15 @@ main#entries {
     font-family: var(--sans-serif-header);
     font-weight: 500;
     font-size: 2rem;
+    color: var(--blue-grey-900);
+}
+
+#main-entries-container h3 {
+    padding: 1.5rem 0 1.5rem 0;
+    flex-grow: 1;
+    font-family: var(--sans-serif-header);
+    font-weight: 500;
+    font-size: 1.8rem;
     color: var(--blue-grey-900);
 }
 
