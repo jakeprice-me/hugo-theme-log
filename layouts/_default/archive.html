@@ -12,20 +12,20 @@
 
         <div class="section-title">
             <h2>
-                <i class="las la-calendar"></i> {{ .Key }}
+                <i class="ti ti-calendar"></i> {{ .Key }}
             </h2>
             <div class="count">
-                <p><i class="las la-file-alt"></i> {{ len .Pages }}</p>
+                <p><i class="ti ti-notes"></i> {{ len .Pages }}</p>
             </div>
         </div>
 
         {{- range .Pages.GroupByDate "January" }}
         <div class="archive-month-title">
             <h2>
-                <i class="las la-calendar-day"></i> {{ .Key }}
+                <i class="ti ti-calendar-day"></i> {{ .Key }}
             </h2>
             <div class="count">
-                <p><i class="las la-file-alt"></i> {{ len .Pages }}</p>
+                <p><i class="ti ti-notes"></i> {{ len .Pages }}</p>
             </div>
         </div>
         <ul class="index_list">

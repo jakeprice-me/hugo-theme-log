@@ -6,7 +6,7 @@
         {{ $filename := .File.BaseFileName }}
         {{ $wikilink :=  printf "%s%s%s" $firstBracket $filename $lastBracket }}
 
-        <h3 id="referenced-by"><i class="las la-link"></i> Referenced By</h3>
+        <h3 id="referenced-by"><i class="ti ti-circles-relation"></i> Referenced By</h3>
         <ul>
             {{- $.Scratch.Add "backlinks" slice -}}
             {{- range .Site.RegularPages -}}
@@ -21,7 +21,7 @@
                 <div id="aside-type">
                     <span class="label_{{ .Params.types }}">
                         <a href="/types/{{ .Params.types }}/">
-                            <i class="las la-folder"></i>
+                            <i class="ti ti-folder"></i>
                             {{ .Params.types }}
                         </a>
                     </span>
@@ -42,7 +42,7 @@
         <!-- End Backlinks -->
         {{ $related := .Site.RegularPages.Related . | first 5 }}
         {{ with $related }}
-        <h3 id="related-entries"><i class="las la-project-diagram"></i> Related Entries</h3>
+        <h3 id="related-entries"><i class="ti ti-line"></i> Related Entries</h3>
         <ul>
             {{ range . }}
             <li>
@@ -52,7 +52,7 @@
                 <div id="aside-type">
                     <span class="label_{{ .Params.types }}">
                         <a href="/types/{{ .Params.types }}/">
-                            <i class="las la-folder"></i>
+                            <i class="ti ti-folder"></i>
                             {{ .Params.types }}
                         </a>
                     </span>

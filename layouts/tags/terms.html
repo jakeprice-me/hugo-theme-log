@@ -11,12 +11,12 @@
         <ul>
             <li>
                 <a href="#type-count">
-                    <i class="las la-folder"></i> Count
+                    <i class="ti ti-folder"></i> Count
                 </a>
             </li>
             <li>
                 <a href="#type-alphabetical">
-                    <i class="las la-folder"></i> Alphabetical
+                    <i class="ti ti-folder"></i> Alphabetical
                 </a>
             </li>
         </ul>
@@ -33,7 +33,7 @@
             {{ range .Data.Terms.ByCount }}
             <li>
                 <span>
-                    <a href="{{ .Page.Permalink }}"><i class="las la-hashtag"></i> {{ .Page.Title }}</a>
+                    <a href="{{ .Page.Permalink }}"><i class="ti ti-tag"></i> {{ lower .Page.Title }}</a>
                 </span>
                 <span class="type-count">
                     <sup>{{ .Count }}</sup>
@@ -54,7 +54,7 @@
             {{ range .Data.Terms.Alphabetical }}
             <li>
                 <span>
-                    <a href="{{ .Page.Permalink }}"><i class="las la-hashtag"></i> {{ .Page.Title }}</a>
+                    <a href="{{ .Page.Permalink }}"><i class="ti ti-tag"></i> {{ lower .Page.Title }}</a>
                 </span>
                 <span class="type-count">
                     <sup>{{ .Count }}</sup>
