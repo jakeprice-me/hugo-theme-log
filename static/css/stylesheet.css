@@ -298,15 +298,55 @@ header {
 
 #header-container {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
 
+#header-container-logo {
+    order: 1;
+}
+
+#header-container-logo img {
+    margin-right: 1rem;
+    display: block;
+    width: 4rem;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+#header-container-title {
+    order: 1;
+    flex-grow: 1;
+    font-family: Cairo;
+    font-size: 3.2rem;
+}
+
+#header-container-title h1 {
+    display: inline;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #fff;
+}
 #header-container h1 {
     font-family: var(--sans-serif);
     font-size: 2.8rem;
     font-weight: 600;
     line-height: 3.5rem;
     color: var(--white);
+}
+
+#header-container-title h1 {
+    font-family: var(--sans-serif);
+    font-size: 2.8rem;
+    font-weight: 600;
+    line-height: 3.5rem;
+    color: var(--white);
+}
+
+#header-container-title a {
+    color: #ffffff;
+    text-decoration: none;
 }
 
 nav#sections {
@@ -595,7 +635,7 @@ ul#entry-tags {
 }
 
 #entry-tags li i {
-    color: var(--blue-grey-600);
+    color: #aaa;
 }
 
 ul#index-open-entry-in {
@@ -613,8 +653,12 @@ ul#index-open-entry-in {
 #index-open-entry-in a:link, 
 #index-open-entry-in a:visited {
     display: inline-block;
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    border-radius: 2rem;
+    /*padding: 0.5rem 1rem 0.5rem 1rem;*/
+    /*border-radius: 2rem;*/
+}
+
+#index-open-entry-in img {
+    width: 1.6rem;
 }
 
 #main-entries-container .types-list li {
@@ -665,6 +709,8 @@ section#frontmatter {
     font-family: var(--sans-serif);
     background: var(--grey-50);
     border-radius: 2rem;
+    font-size: 1.6rem;
+
 }
 
 #section-frontmatter-container ul {
@@ -704,9 +750,25 @@ section#frontmatter {
 }
 
 #section-frontmatter-container li#entry-link {
+    padding: 0;
+    margin-bottom: 0.25rem;
+    margin-left: 3.4rem;
     font-size: 1.6rem;
     line-height: 2.5rem;
+    list-style-type: none;
 }
+
+#link-header {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#section-frontmatter-container li#entry-link:before {
+    content: '-';
+    position: absolute;
+    margin-left: -1rem;
+  }
+
 
 #section-frontmatter-container li#entry-link a:link,
 #section-frontmatter-container li#entry-link a:visited {
@@ -801,11 +863,11 @@ article h4 a:hover:after,
 article h5 a:hover:after,
 article h6 a:hover:after {
     padding-left: 0.5rem;
-    font-family: "Line Awesome Free";
+    font-family: "tabler-icons";
     font-size: 2rem;
     font-weight: 900;
     line-height: 2.5rem;
-    content: "\f0c1";
+    content: "\eade";
     opacity: 0.5;
 }
 
@@ -1036,10 +1098,9 @@ article a:visited {
 }
 article p a:link:after {
   margin: 0 0 0 0.3rem;
-  font-family: "Line Awesome Free";
+  font-family: "tabler-icons";
   font-size: 1.6rem;
-  font-weight: 900;
-  content: "\f35d";
+  content: "\eade";
 }
 
 article a:active,
@@ -1061,10 +1122,25 @@ article p a.wikilink:after,
 article li a.wikilink:after,
 article td a.wikilink:after {
   margin: 0 0 0 0.3rem;
-  font-family: "Line Awesome Free";
+  font-family: "tabler-icons";
   font-size: 1.6rem;
-  font-weight: 900;
-  content: "\f0c1";
+  content: "\f4c3";
+}
+
+article embed {
+    width: 100%;
+    height: 50vh;
+    border-radius: 1rem;
+}
+
+article audio {
+    width: 100%;
+    border-radius: 1rem;
+}
+
+article video {
+    width: 100%;
+    border-radius: 1rem;
 }
 
 article .full-width {
@@ -1712,12 +1788,12 @@ aside#related {
     text-decoration: none;
 }
 
-#obsidian a:link,
+/* #obsidian a:link,
 #obsidian a:visited {
     color: var(--deep-purple-900);
     background-color: var(--deep-purple-100);
     text-decoration: none;
-}
+}*/
 
 #vscode a:link,
 #vscode a:visited {
@@ -1801,6 +1877,26 @@ span[class*="label_"] {
     text-decoration: none;
 }
 
+.label_filing {
+    color: var(--white);
+    background-color: #757575;
+}
+
+.label_filing a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.label_obsidian {
+    color: var(--white);
+    background-color: #a079ff;
+}
+
+.label_obsidian a {
+    color: var(--white);
+    text-decoration: none;
+}
+
 .label_title {
     color: #004d40;
     background-color: #e0f2f1;
@@ -1808,6 +1904,16 @@ span[class*="label_"] {
 
 .label_title a {
     color: #004d40;
+    text-decoration: none;
+}
+
+.label_bible-study {
+    color: #EFEBE9;
+    background-color: #8D6E63;
+}
+
+.label_bible-study a {
+    color: #EFEBE9;
     text-decoration: none;
 }
 
